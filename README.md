@@ -1,2 +1,2 @@
-# hackathon-project-ai-2025
+# ReWear
 Solution for the selected Hackathon problem statement
