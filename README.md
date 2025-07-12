@@ -1,3 +1,4 @@
+
 # 👗 ReWear – Community Clothing Exchange ♻️
 
 **Solution for the selected Hackathon problem statement**
@@ -70,6 +71,12 @@ The platform allows users to browse pre-loved clothes, donate unused garments, a
 ### ✨ Ritu Mahajan  
 3rd Year CE Student | Web Developer | Android Development with Kotlin  
 📧 mahajanritu0801@gmail.com
+
+### ✨ Ruhsita ajgyaa
+3rd Year CE Student | Web Developer | Android Development with Kotlin 
+📧 23amtics051@gmail.com
+
+
 
 ---
 
