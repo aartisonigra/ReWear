@@ -1,4 +1,3 @@
-
 # 👗 ReWear – Community Clothing Exchange ♻️
 
 **Solution for the selected Hackathon problem statement**
