@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - ReWear</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar admin-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-recycle"></i>
+                <span>ReWear Admin</span>
+            </div>
+            <div class="nav-menu">
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Content -->
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-item active" data-section="pending">
+                    <i class="fas fa-clock"></i>
+                    <span>Pending Items</span>
+                    <span class="badge" id="pending-count">0</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="approved">
+                    <i class="fas fa-check"></i>
+                    <span>Approved Items</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="rejected">
+                    <i class="fas fa-times"></i>
+                    <span>Rejected Items</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="reports">
+                    <i class="fas fa-flag"></i>
+                    <span>Reports</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Pending Items Section -->
+            <div class="admin-section active" id="pending">
+                <div class="admin-header">
+                    <h1>Pending Items</h1>
+                    <p>Review and moderate item listings</p>
+                </div>
+                <div class="admin-items" id="pending-items">
+                    <!-- Pending items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Approved Items Section -->
+            <div class="admin-section" id="approved">
+                <div class="admin-header">
+                    <h1>Approved Items</h1>
+                </div>
+                <div class="admin-items" id="approved-items">
+                    <!-- Approved items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Rejected Items Section -->
+            <div class="admin-section" id="rejected">
+                <div class="admin-header">
+                    <h1>Rejected Items</h1>
+                </div>
+                <div class="admin-items" id="rejected-items">
+                    <!-- Rejected items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Users Section -->
+            <div class="admin-section" id="users">
+                <div class="admin-header">
+                    <h1>User Management</h1>
+                </div>
+                <div class="users-table">
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Items Listed</th>
+                                <th>Swaps Completed</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports Section -->
+            <div class="admin-section" id="reports">
+                <div class="admin-header">
+                    <h1>Reported Items</h1>
+                </div>
+                <div class="admin-items" id="reported-items">
+                    <!-- Reported items will be loaded here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Item Review Modal -->
+    <div class="modal admin-modal" id="review-modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeModal('review-modal')">&times;</span>
+            <div class="review-content">
+                <div class="review-images">
+                    <div class="main-image">
+                        <img id="review-main-image" src="" alt="Item">
+                    </div>
+                    <div class="thumbnail-images" id="review-thumbnails">
+                        <!-- Thumbnails will be loaded here -->
+                    </div>
+                </div>
+                <div class="review-details">
+                    <h2 id="review-title"></h2>
+                    <div class="review-meta">
+                        <span class="meta-item"><strong>Category:</strong> <span id="review-category"></span></span>
+                        <span class="meta-item"><strong>Size:</strong> <span id="review-size"></span></span>
+                        <span class="meta-item"><strong>Condition:</strong> <span id="review-condition"></span></span>
+                        <span class="meta-item"><strong>Points:</strong> <span id="review-points"></span></span>
+                    </div>
+                    <div class="review-description">
+                        <h3>Description</h3>
+                        <p id="review-description-text"></p>
+                    </div>
+                    <div class="review-user">
+                        <h3>Listed by</h3>
+                        <p id="review-user-name"></p>
+                    </div>
+                    <div class="review-actions">
+                        <button class="btn btn-success" onclick="approveItem()">
+                            <i class="fas fa-check"></i> Approve
+                        </button>
+                        <button class="btn btn-danger" onclick="rejectItem()">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

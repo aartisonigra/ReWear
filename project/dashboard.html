@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ReWear</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-recycle"></i>
+                <span>ReWear</span>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="browse.html" class="nav-link">Browse</a>
+                <a href="add-item.html" class="nav-link">Add Item</a>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar">
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-item active" data-section="overview">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="my-items">
+                    <i class="fas fa-tshirt"></i>
+                    <span>My Items</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="swaps">
+                    <i class="fas fa-exchange-alt"></i>
+                    <span>Swaps</span>
+                </a>
+                <a href="#" class="sidebar-item" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <div class="dashboard-section active" id="overview">
+                <div class="dashboard-header">
+                    <h1>Welcome back, <span id="user-name">User</span>!</h1>
+                    <button class="btn btn-primary" onclick="location.href='add-item.html'">
+                        <i class="fas fa-plus"></i> Add New Item
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="user-points">150</h3>
+                            <p>Points Balance</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-items">12</h3>
+                            <p>Items Listed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="total-swaps">8</h3>
+                            <p>Successful Swaps</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="wishlist-items">5</h3>
+                            <p>Wishlist Items</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="dashboard-card">
+                    <h2>Recent Activity</h2>
+                    <div class="activity-list" id="recent-activity">
+                        <!-- Activities will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Items Section -->
+            <div class="dashboard-section" id="my-items">
+                <div class="dashboard-header">
+                    <h1>My Items</h1>
+                    <button class="btn btn-primary" onclick="location.href='add-item.html'">
+                        <i class="fas fa-plus"></i> Add New Item
+                    </button>
+                </div>
+                <div class="items-grid" id="user-items">
+                    <!-- User items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Swaps Section -->
+            <div class="dashboard-section" id="swaps">
+                <div class="dashboard-header">
+                    <h1>My Swaps</h1>
+                </div>
+                <div class="swaps-tabs">
+                    <button class="tab-btn active" data-tab="pending">Pending</button>
+                    <button class="tab-btn" data-tab="active">Active</button>
+                    <button class="tab-btn" data-tab="completed">Completed</button>
+                </div>
+                <div class="swaps-content">
+                    <div class="tab-content active" id="pending-swaps">
+                        <!-- Pending swaps will be loaded here -->
+                    </div>
+                    <div class="tab-content" id="active-swaps">
+                        <!-- Active swaps will be loaded here -->
+                    </div>
+                    <div class="tab-content" id="completed-swaps">
+                        <!-- Completed swaps will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="dashboard-section" id="profile">
+                <div class="dashboard-header">
+                    <h1>Profile Settings</h1>
+                </div>
+                <div class="profile-form">
+                    <form id="profile-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="profile-name">Full Name</label>
+                                <input type="text" id="profile-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-email">Email</label>
+                                <input type="email" id="profile-email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-location">Location</label>
+                                <input type="text" id="profile-location">
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-bio">Bio</label>
+                                <textarea id="profile-bio" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Profile</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

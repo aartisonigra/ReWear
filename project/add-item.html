@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Item - ReWear</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-recycle"></i>
+                <span>ReWear</span>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="browse.html" class="nav-link">Browse</a>
+                <a href="add-item.html" class="nav-link active">Add Item</a>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add Item Form -->
+    <div class="container add-item-container">
+        <div class="add-item-header">
+            <h1>Add New Item</h1>
+            <p>Share your unused clothing with the ReWear community</p>
+        </div>
+
+        <form id="add-item-form" class="add-item-form">
+            <!-- Image Upload Section -->
+            <div class="form-section">
+                <h2>Item Photos</h2>
+                <div class="image-upload-area" id="image-upload">
+                    <div class="upload-placeholder">
+                        <i class="fas fa-camera"></i>
+                        <p>Click or drag images here</p>
+                        <span>Upload up to 5 photos</span>
+                    </div>
+                    <input type="file" id="item-images" multiple accept="image/*" style="display: none;">
+                </div>
+                <div class="image-preview" id="image-preview"></div>
+            </div>
+
+            <!-- Item Details Section -->
+            <div class="form-section">
+                <h2>Item Details</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="item-title">Item Title *</label>
+                        <input type="text" id="item-title" required placeholder="e.g., Vintage Denim Jacket">
+                    </div>
+                    <div class="form-group">
+                        <label for="item-category">Category *</label>
+                        <select id="item-category" required>
+                            <option value="">Select Category</option>
+                            <option value="tops">Tops</option>
+                            <option value="bottoms">Bottoms</option>
+                            <option value="dresses">Dresses</option>
+                            <option value="outerwear">Outerwear</option>
+                            <option value="shoes">Shoes</option>
+                            <option value="accessories">Accessories</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="item-size">Size *</label>
+                        <select id="item-size" required>
+                            <option value="">Select Size</option>
+                            <option value="xs">XS</option>
+                            <option value="s">S</option>
+                            <option value="m">M</option>
+                            <option value="l">L</option>
+                            <option value="xl">XL</option>
+                            <option value="xxl">XXL</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="item-condition">Condition *</label>
+                        <select id="item-condition" required>
+                            <option value="">Select Condition</option>
+                            <option value="new">New with tags</option>
+                            <option value="like-new">Like new</option>
+                            <option value="good">Good</option>
+                            <option value="fair">Fair</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="item-description">Description *</label>
+                    <textarea id="item-description" required rows="4" placeholder="Describe the item, its condition, and any special features..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="item-tags">Tags</label>
+                    <input type="text" id="item-tags" placeholder="e.g., vintage, designer, casual (comma separated)">
+                </div>
+            </div>
+
+            <!-- Exchange Options -->
+            <div class="form-section">
+                <h2>Exchange Options</h2>
+                <div class="exchange-options">
+                    <label class="checkbox-option">
+                        <input type="checkbox" id="allow-swaps" checked>
+                        <span class="checkmark"></span>
+                        Allow direct swaps with other items
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" id="allow-points" checked>
+                        <span class="checkmark"></span>
+                        Allow redemption with points
+                    </label>
+                </div>
+                <div class="form-group" id="point-value-group">
+                    <label for="point-value">Point Value</label>
+                    <input type="number" id="point-value" min="1" placeholder="Enter point value for redemption">
+                    <small>Suggested: 50-200 points based on item value and condition</small>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" onclick="history.back()">Cancel</button>
+                <button type="submit" class="btn btn-primary">List Item</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/add-item.js"></script>
+</body>
+</html>

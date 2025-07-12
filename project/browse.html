@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Items - ReWear</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar dashboard-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-recycle"></i>
+                <span>ReWear</span>
+            </div>
+            <div class="nav-menu">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="browse.html" class="nav-link active">Browse</a>
+                <a href="add-item.html" class="nav-link">Add Item</a>
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <a href="#" class="dropdown-item">Profile</a>
+                        <a href="#" class="dropdown-item">Settings</a>
+                        <a href="#" class="dropdown-item" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Browse Content -->
+    <div class="browse-container">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <div class="filters-header">
+                <h2>Filters</h2>
+                <button class="clear-filters" onclick="clearFilters()">Clear All</button>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Category</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="tops">
+                        <span>Tops</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="bottoms">
+                        <span>Bottoms</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="dresses">
+                        <span>Dresses</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="outerwear">
+                        <span>Outerwear</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="shoes">
+                        <span>Shoes</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="accessories">
+                        <span>Accessories</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Size</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="xs">
+                        <span>XS</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="s">
+                        <span>S</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="m">
+                        <span>M</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="l">
+                        <span>L</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="xl">
+                        <span>XL</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="xxl">
+                        <span>XXL</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Condition</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="new">
+                        <span>New with tags</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="like-new">
+                        <span>Like new</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="good">
+                        <span>Good</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="fair">
+                        <span>Fair</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Exchange Type</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" value="swap">
+                        <span>Direct Swap</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="points">
+                        <span>Points Redemption</span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Browse Area -->
+        <main class="browse-main">
+            <div class="browse-header">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search for items...">
+                </div>
+                <div class="sort-options">
+                    <select id="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="points-low">Points: Low to High</option>
+                        <option value="points-high">Points: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="items-grid" id="items-grid">
+                <!-- Items will be loaded here -->
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-outline" id="load-more-btn">Load More Items</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/browse.js"></script>
+</body>
+</html>
